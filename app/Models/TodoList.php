@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class TodoList extends Model
 {
-    //
+    protected $table = 'todolist';
+    protected $fillable = ["name","completed"];
 }

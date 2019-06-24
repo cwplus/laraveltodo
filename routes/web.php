@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('todos','TodoListController')->only([
+    'index',
+    'destroy',
+    'update',
+    'store'
+
+]);
