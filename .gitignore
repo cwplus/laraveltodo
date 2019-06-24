@@ -13,4 +13,5 @@ yarn-error.log
 .idea/*.xml
 /.idea/*
 .DS_Store
+.idea
 *.ignored
