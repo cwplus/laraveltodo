@@ -1934,9 +1934,7 @@ var todos = [{
           eventBus.$off('filterChanged' );
           eventBus.$off('clearedCompleteTodos' );*/
   },
-  mounted: function mounted() {
-    console.log('its ok');
-  },
+  mounted: function mounted() {},
   methods: {
     createTodo: function createTodo(newTodo) {
       var todo = {

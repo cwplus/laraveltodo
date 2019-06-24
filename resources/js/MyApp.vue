@@ -75,7 +75,7 @@
                   eventBus.$off('clearedCompleteTodos' );*/
         },
         mounted: function(){
-            console.log('its ok')
+
         },
         methods: {
             createTodo:function(newTodo){
