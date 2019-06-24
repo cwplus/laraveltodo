@@ -60,7 +60,8 @@
             }
         },
         created(){
-            window.eventBus.$on('createTodo',(newTodo)=> this.createTodo(newTodo))
+            eventBus.$on('createTodo',(newTodo)=> this.createTodo(newTodo))
+            eventBus.$on('updateTodo',(data)=> this.updateTodo(data))
             /*      eventBus.$on('finishedEdit',(data)=> this.finishedEdit(data));
                   eventBus.$on('removedTodo',(index)=> this.removeTodo(index));
                   eventBus.$on('checkAllChanged',() => this.checkAllTodos());
@@ -75,11 +76,21 @@
                   eventBus.$off('clearedCompleteTodos' );*/
         },
         mounted: function(){
-            axios.get("http://127.0.0.1:8000/todos").then(res=>{
+            axios.get("/todos").then(res=>{
                 this.todos = res.data.todos
             })
         },
         methods: {
+            updateTodo: function(data){
+
+                this.todos.splice(data.index, 1, data.todo);
+                axios.put("/todos/"+data.todo.id,{
+                    name: data.todo.name,
+                    completed: data.todo.completed
+                }).then(res=>{
+                    console.log(res)
+                })
+            },
             createTodo:function(newTodo){
                 let todo =  {
                     id:10,

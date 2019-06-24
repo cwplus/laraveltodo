@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\GeneralHelper;
 use App\Http\Resources\TodoListJson;
 use App\Models\TodoList as Todo;
 use Illuminate\Http\Request;
@@ -72,7 +73,13 @@ class TodoListController extends Controller
      */
     public function update(Request $request, Todo $todo)
     {
-        //
+        $data = $request->validate([
+            'name'=> "required|string",
+            'completed' => "required|boolean"
+        ]);
+        $todo->update($data);
+        $todo->completed = GeneralHelper::toBool($todo->completed);
+        return response($todo, 200);
     }
 
     /**

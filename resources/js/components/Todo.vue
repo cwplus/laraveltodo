@@ -3,7 +3,7 @@
         <div class="todo-left">
             <label class="input-check">
                 <input type="checkbox" v-model="completed">
-                #{{ index }} -
+                #{{ todo.id }} -
             </label>
             <span class="todo-label" v-if="!editing" @dblclick="editTodo" :class="{completed: completed}"> {{ name }}</span>
             <input v-else class="todo-edit" type="text" v-model="name" @blur="SubmitEdit" @keyup.enter="SubmitEdit" @keyup.esc="cancelEdit" v-focus>
@@ -50,7 +50,6 @@
             editTodo(){
                 this.beforeEditName = this.name
                 this.editing = true
-                console.log(eventBus)
             },
             removeTodo(index){
 
@@ -61,11 +60,11 @@
                 if(_.isEmpty(this.name)) {
                     this.name = this.beforeEditName
                 } else {
-                    todo.name = this.name
-                    todo.editing = false
+                    this.todo.name = this.name
+                    this.todo.editing = false
                     eventBus.$emit('updateTodo',{
                         index: this.index,
-                        todo: todo
+                        todo: this.todo
                     })
                 }
                 this.beforeEditName = ''
@@ -73,7 +72,6 @@
             },
             cancelEdit(){
                 this.name = this.beforeEditName
-                this.todo.name = this.name
                 this.beforeEditName = ''
                 this.editing = false
             }
@@ -99,8 +97,8 @@
             }
         }
         .todo-left{
-            display: flex;
-            flex-direction: row;
+/*            display: flex;
+            flex-direction: row;*/
             align-items: center;
             width: 95%;
             .todo-label{

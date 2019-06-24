@@ -1494,7 +1494,7 @@ module.exports = function spread(callback) {
 
 
 var bind = __webpack_require__(/*! ./helpers/bind */ "./node_modules/axios/lib/helpers/bind.js");
-var isBuffer = __webpack_require__(/*! is-buffer */ "./node_modules/axios/node_modules/is-buffer/index.js");
+var isBuffer = __webpack_require__(/*! is-buffer */ "./node_modules/is-buffer/index.js");
 
 /*global toString:true*/
 
@@ -1829,28 +1829,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/axios/node_modules/is-buffer/index.js":
-/*!************************************************************!*\
-  !*** ./node_modules/axios/node_modules/is-buffer/index.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/*!
- * Determine if an object is a Buffer
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
-
-module.exports = function isBuffer (obj) {
-  return obj != null && obj.constructor != null &&
-    typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-}
-
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/MyApp.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/MyApp.vue?vue&type=script&lang=js& ***!
@@ -1918,8 +1896,11 @@ var todos = [{
   created: function created() {
     var _this = this;
 
-    window.eventBus.$on('createTodo', function (newTodo) {
+    eventBus.$on('createTodo', function (newTodo) {
       return _this.createTodo(newTodo);
+    });
+    eventBus.$on('updateTodo', function (data) {
+      return _this.updateTodo(data);
     });
     /*      eventBus.$on('finishedEdit',(data)=> this.finishedEdit(data));
           eventBus.$on('removedTodo',(index)=> this.removeTodo(index));
@@ -1937,11 +1918,20 @@ var todos = [{
   mounted: function mounted() {
     var _this2 = this;
 
-    axios.get("http://127.0.0.1:8000/todos").then(function (res) {
+    axios.get("/todos").then(function (res) {
       _this2.todos = res.data.todos;
     });
   },
   methods: {
+    updateTodo: function updateTodo(data) {
+      this.todos.splice(data.index, 1, data.todo);
+      axios.put("/todos/" + data.todo.id, {
+        name: data.todo.name,
+        completed: data.todo.completed
+      }).then(function (res) {
+        console.log(res);
+      });
+    },
     createTodo: function createTodo(newTodo) {
       var todo = {
         id: 10,
@@ -2085,7 +2075,6 @@ __webpack_require__.r(__webpack_exports__);
     editTodo: function editTodo() {
       this.beforeEditName = this.name;
       this.editing = true;
-      console.log(eventBus);
     },
     removeTodo: function removeTodo(index) {},
     SubmitEdit: function SubmitEdit() {
@@ -2094,11 +2083,11 @@ __webpack_require__.r(__webpack_exports__);
       if (lodash__WEBPACK_IMPORTED_MODULE_0___default.a.isEmpty(this.name)) {
         this.name = this.beforeEditName;
       } else {
-        todo.name = this.name;
-        todo.editing = false;
+        this.todo.name = this.name;
+        this.todo.editing = false;
         eventBus.$emit('updateTodo', {
           index: this.index,
-          todo: todo
+          todo: this.todo
         });
       }
 
@@ -2107,7 +2096,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     cancelEdit: function cancelEdit() {
       this.name = this.beforeEditName;
-      this.todo.name = this.name;
       this.beforeEditName = '';
       this.editing = false;
     }
@@ -6641,7 +6629,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/*.todo{\n    margin-bottom: 12px;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}*/\n.todo-item[data-v-56644c31] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.todo-item .remove-item[data-v-56644c31] {\n  cursor: pointer;\n  margin-left: 14px;\n}\n.todo-item .remove-item[data-v-56644c31]:hover {\n  color: #FF0000;\n}\n.todo-item .todo-left[data-v-56644c31] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  width: 95%;\n}\n.todo-item .todo-left .todo-label[data-v-56644c31] {\n  margin-left: 2px;\n}\n.todo-item .todo-left .input-check[data-v-56644c31] {\n  width: 15%;\n}\n.todo-item .todo-left .todo-edit[data-v-56644c31] {\n  font-size: 16px;\n  color: #2c3e50;\n  width: auto;\n}\n.todo-item .todo-left .todo-edit[data-v-56644c31]:focus {\n  outline: none;\n}\n.completed[data-v-56644c31] {\n  text-decoration: line-through;\n  color: gray;\n}", ""]);
+exports.push([module.i, "/*.todo{\n    margin-bottom: 12px;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}*/\n.todo-item[data-v-56644c31] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.todo-item .remove-item[data-v-56644c31] {\n  cursor: pointer;\n  margin-left: 14px;\n}\n.todo-item .remove-item[data-v-56644c31]:hover {\n  color: #FF0000;\n}\n.todo-item .todo-left[data-v-56644c31] {\n  /*            display: flex;\n              flex-direction: row;*/\n  -webkit-box-align: center;\n          align-items: center;\n  width: 95%;\n}\n.todo-item .todo-left .todo-label[data-v-56644c31] {\n  margin-left: 2px;\n}\n.todo-item .todo-left .input-check[data-v-56644c31] {\n  width: 15%;\n}\n.todo-item .todo-left .todo-edit[data-v-56644c31] {\n  font-size: 16px;\n  color: #2c3e50;\n  width: auto;\n}\n.todo-item .todo-left .todo-edit[data-v-56644c31]:focus {\n  outline: none;\n}\n.completed[data-v-56644c31] {\n  text-decoration: line-through;\n  color: gray;\n}", ""]);
 
 // exports
 
@@ -6749,6 +6737,28 @@ function toComment(sourceMap) {
 	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
 
 	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/is-buffer/index.js":
+/*!*****************************************!*\
+  !*** ./node_modules/is-buffer/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+module.exports = function isBuffer (obj) {
+  return obj != null && obj.constructor != null &&
+    typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
 }
 
 
@@ -38370,7 +38380,7 @@ var render = function() {
             }
           }
         }),
-        _vm._v("\n            #" + _vm._s(_vm.index) + " -\n        ")
+        _vm._v("\n            #" + _vm._s(_vm.todo.id) + " -\n        ")
       ]),
       _vm._v(" "),
       !_vm.editing
@@ -52301,8 +52311,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/khalidelhakym/Sites/examples/laravel5/8x/laraveltodo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/khalidelhakym/Sites/examples/laravel5/8x/laraveltodo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\laraveltodo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\laraveltodo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
