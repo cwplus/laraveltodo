@@ -1,5 +1,5 @@
 <template>
-    <div class="check-all"><label><button class="toggle-all" @change="allChecked">All</button></label></div>
+    <div class="check-all"><label><button model="anyRemaining" class="toggle-all" @change="allChecked">All</button></label></div>
 </template>
 
 <script>
@@ -7,7 +7,7 @@
         name: "TodoCheckAll",
         data(){
             return {
-                anyRemaining: 0
+
             }
         },
         methods: {

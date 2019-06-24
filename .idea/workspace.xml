@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94f36995-0259-4a53-8345-88c46db1d021" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/TodoCheckAll.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/TodoClearCompleted.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/TodoFiltred.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/TodoItemsRemaining.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TodoListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TodoListController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/TodoList.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/TodoList.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/MyApp.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/MyApp.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Footer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Footer.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Todo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Todo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/TodoCheckAll.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/TodoCheckAll.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,8 +43,8 @@
       <file pinned="true" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TodoListController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
+            <state relative-caret-position="331">
+              <caret line="97" column="24" selection-start-line="97" selection-start-column="24" selection-end-line="97" selection-end-column="24" />
               <folding>
                 <element signature="e#40#70#0#PHP" expanded="true" />
               </folding>
@@ -81,11 +73,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/Todos.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/MyApp.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="93" column="48" lean-forward="true" selection-start-line="93" selection-start-column="48" selection-end-line="93" selection-end-column="48" />
+            <state relative-caret-position="34">
+              <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
               <folding>
                 <element signature="e#285#325#0" expanded="true" />
               </folding>
@@ -94,14 +95,20 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/vue-notification/src/VelocityGroup.vue">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/resources/js/components/Todo.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="30" selection-end-column="14" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/vue-notification/src/Notifications.vue">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/TodoFiltred.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5763" />
+            <state relative-caret-position="17">
+              <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -114,20 +121,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/Header.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="53" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="53" />
+            <state relative-caret-position="291">
+              <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/Todo.vue">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/TodoCheckAll.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="52" column="58" selection-start-line="52" selection-start-column="58" selection-end-line="52" selection-end-column="58" />
+            <state relative-caret-position="153">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -146,8 +153,8 @@
     <findStrings>
       <find>database</find>
       <find>database/path/to/database.sqlite</find>
-      <find>console.log</find>
       <find>indexOf</find>
+      <find>console.log</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -187,14 +194,14 @@
         <option value="$PROJECT_DIR$/resources/js/components/TodoClearCompleted.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/TodoItemsRemaining.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/Footer.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/TodoCheckAll.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/Header.vue" />
         <option value="$PROJECT_DIR$/app/Models/TodoList.php" />
         <option value="$PROJECT_DIR$/resources/js/components/Todo.vue" />
         <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TodoListController.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/TodoCheckAll.vue" />
         <option value="$PROJECT_DIR$/resources/js/MyApp.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/Header.vue" />
       </list>
     </option>
   </component>
@@ -362,6 +369,13 @@
             <path>
               <item name="laraveltodo" type="b2602c69:ProjectViewProjectNode" />
               <item name="laraveltodo" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="laraveltodo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="laraveltodo" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -486,12 +500,12 @@
       <workItem from="1561331080726" duration="12022000" />
       <workItem from="1561361130329" duration="163000" />
       <workItem from="1561361329955" duration="3670000" />
-      <workItem from="1561366215443" duration="12588000" />
+      <workItem from="1561366215443" duration="16794000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31671000" />
+    <option name="totallyTimeSpent" value="35877000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -506,7 +520,7 @@
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49918962" visible="true" weight="0.25266525" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49918962" visible="true" weight="0.25266525" />
       <window_info id="Structure" order="1" sideWeight="0.5008104" side_tool="true" weight="0.25266525" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" weight="0.3290735" />
@@ -523,7 +537,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32936078" />
       <window_info anchor="bottom" id="DB Execution Console" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" sideWeight="0.4995015" weight="0.32953367" />
-      <window_info anchor="bottom" x="2048" y="388" width="1834" height="326" id="Terminal" order="12" visible="true" weight="0.33152762" />
+      <window_info active="true" anchor="bottom" x="2048" y="388" width="1834" height="326" id="Terminal" order="12" visible="true" weight="0.33152762" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50049853" side_tool="true" weight="0.32953367" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -682,13 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/TodoFiltred.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -696,20 +703,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/TodoCheckAll.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Todos.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" column="21" selection-start-line="12" selection-start-column="22" selection-end-line="13" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -726,30 +719,6 @@
           <caret line="15" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Todo.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="52" column="58" selection-start-line="52" selection-start-column="58" selection-end-line="52" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Header.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="53" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue-notification/src/VelocityGroup.vue">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/vue-notification/src/Notifications.vue">
       <provider selected="true" editor-type-id="text-editor">
@@ -773,26 +742,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/vue-notification/src/CssGroup.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/vue-notification/src/VelocityGroup.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TodoListController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
+        <state relative-caret-position="331">
+          <caret line="97" column="24" selection-start-line="97" selection-start-column="24" selection-end-line="97" selection-end-column="24" />
           <folding>
             <element signature="e#40#70#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue-notification/src/CssGroup.vue">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Todos.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Todo.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="30" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/TodoFiltred.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/TodoCheckAll.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/MyApp.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="93" column="48" lean-forward="true" selection-start-line="93" selection-start-column="48" selection-end-line="93" selection-end-column="48" />
+        <state relative-caret-position="34">
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
           <folding>
             <element signature="e#285#325#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Header.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
         </state>
       </provider>
     </entry>

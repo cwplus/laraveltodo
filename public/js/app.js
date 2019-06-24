@@ -1934,24 +1934,26 @@ var todos = [{
       var created_todo_notification = new Audio("media/notification.mp3");
       created_todo_notification.play();
     },
-    notification_by_msg: function notification_by_msg() {
+    notification_by_msg: function notification_by_msg(args) {
       var group = 'notifications';
       var type = 'info';
       var text = "Tache ajoutée avec succès :-) !!!";
       var title = "Notification";
-
-      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
       if (_.isString(args)) text = args;else if (_.isArray(args)) {
         text = args[0];
-        if (_.isSet(args[1])) type = args[1];
-        if (_.isSet(args[2])) title = args[2];
-        if (_.isSet(args[3])) group = args[3];
+
+        if (!_.isUndefined(args[1])) {
+          type = args[1];
+        }
+
+        if (!_.isUndefined(args[2])) {
+          title = args[2];
+        }
+
+        if (!_.isUndefined(args[3])) {
+          group = args[3];
+        }
       }
-      console.log(args.indexOf(0));
-      console.log(_.map(args, 1));
       this.$notify({
         group: group,
         type: type,
@@ -2028,7 +2030,10 @@ var todos = [{
         if (res.status == 200) {
           _this6.todos.splice(index, 1, todo);
 
-          _this6.notification_by_msg(["Toutes les taches sont completes !!!", "success"]);
+          var text = "La tache est compléte !!!";
+          if (!todo.completed) text = "La tache n'est pas compléte !!!";
+
+          _this6.notification_by_msg([text, "success"]);
         } else {
           _this6.notification_by_msg(["Erreur, lors de l'execution !!!", "warn"]);
         }
@@ -2097,7 +2102,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Header",
-  props: ["remaining"],
+  props: ['remaining'],
   components: {
     TodoCheckAll: _TodoCheckAll__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -2105,6 +2110,15 @@ __webpack_require__.r(__webpack_exports__);
     return {
       todoInput: ''
     };
+  },
+  computed: {
+    todosRemaining: function todosRemaining() {
+      console.log(this.remaining);
+      return this.remaining;
+    }
+  },
+  mounted: function mounted() {
+    console.log(this.remaining);
   },
   methods: {
     createTodo: function createTodo() {
@@ -2233,9 +2247,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TodoCheckAll",
   data: function data() {
-    return {
-      anyRemaining: 0
-    };
+    return {};
   },
   methods: {
     allChecked: function allChecked() {
@@ -38749,7 +38761,11 @@ var render = function() {
     _c("label", [
       _c(
         "button",
-        { staticClass: "toggle-all", on: { change: _vm.allChecked } },
+        {
+          staticClass: "toggle-all",
+          attrs: { model: "anyRemaining" },
+          on: { change: _vm.allChecked }
+        },
         [_vm._v("All")]
       )
     ])

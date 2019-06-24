@@ -78,15 +78,15 @@
         },
         computed:{
             remaining: function(){
-                return this.todos.filter(todo=>!todo.completed).length;
-            }
+                return this.todos.filter(todo=>!todo.completed).length
+            },
         },
         methods: {
             notification_by_sound: function(){
                 let created_todo_notification = new Audio("media/notification.mp3")
                 created_todo_notification.play()
             },
-            notification_by_msg: function(...args){
+            notification_by_msg: function(args){
                 let group = 'notifications'
                 let type = 'info'
                 let text = "Tache ajoutée avec succès :-) !!!"
@@ -94,12 +94,17 @@
                 if(_.isString(args)) text = args
                 else if(_.isArray(args)){
                     text = args[0]
-                    if(_.isSet(args[1])) type = args[1]
-                    if(_.isSet(args[2])) title = args[2]
-                    if(_.isSet(args[3])) group = args[3]
+                    if(!_.isUndefined(args[1])) {
+                        type = args[1]
+                    }
+                    if(!_.isUndefined(args[2])) {
+                        title = args[2]
+                    }
+                    if(!_.isUndefined(args[3])) {
+                        group = args[3]
+                    }
                 }
-                console.log(args.indexOf(0))
-                console.log(_.map(args,1))
+
                 this.$notify({
                     group: group,
                     type: type,
@@ -178,8 +183,10 @@
                     this.notification_by_sound()
                     if(res.status == 200){
                         this.todos.splice(index, 1, todo)
+                        let text = "La tache est compléte !!!"
+                        if(!todo.completed) text = "La tache n'est pas compléte !!!"
                         this.notification_by_msg([
-                            "Toutes les taches sont completes !!!",
+                            text,
                             "success"
                         ])
                     } else {

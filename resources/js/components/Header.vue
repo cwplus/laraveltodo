@@ -1,6 +1,6 @@
 <template>
     <header>
-        <TodoCheckAll></TodoCheckAll>
+         <TodoCheckAll></TodoCheckAll>
         <input ref="todoInput" v-model="todoInput" type="text" name="todoInput" id="todoInput" placeholder="Une nouvelle tache à ajouter ? ..."/>
         <button  class="submit" v-on:click="createTodo">+</button>
     </header>
@@ -11,14 +11,23 @@
 
     export default {
         name: "Header",
-        props: ["remaining"],
+        props:['remaining'],
         components:{
           TodoCheckAll: TodoCheckAll
         },
         data() {
             return {
-                todoInput: ''
+                todoInput: '',
             }
+        },
+        computed: {
+            todosRemaining: function(){
+                console.log(this.remaining)
+                return this.remaining
+            }
+        },
+        mounted: function(){
+            console.log(this.remaining)
         },
         methods: {
             createTodo: function(){

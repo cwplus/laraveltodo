@@ -98,4 +98,11 @@ class TodoListController extends Controller
         $todo->delete();
         return response(['deleted'=>true], 200);
     }
+
+    /**
+     * @param bool $checked
+     */
+    public function checkCompleted(bool $checked){
+        DB::table('todolist')->update(['completed' => $checked]);
+    }
 }
