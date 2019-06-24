@@ -1,13 +1,20 @@
 <template>
     <header>
+        <TodoCheckAll></TodoCheckAll>
         <input ref="todoInput" v-model="todoInput" type="text" name="todoInput" id="todoInput" placeholder="Une nouvelle tache à ajouter ? ..."/>
         <button  class="submit" v-on:click="createTodo">+</button>
     </header>
 </template>
 
 <script>
+    import TodoCheckAll from "./TodoCheckAll";
+
     export default {
         name: "Header",
+        props: ["remaining"],
+        components:{
+          TodoCheckAll: TodoCheckAll
+        },
         data() {
             return {
                 todoInput: ''

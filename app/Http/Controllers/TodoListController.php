@@ -18,7 +18,7 @@ class TodoListController extends Controller
     {
         $todos = TodoListJson::collection(Todo::all());
 
-        return response()->json(['todos'=> $todos]);
+        return response(['todos'=> $todos],200);
     }
 
     /**
@@ -39,7 +39,12 @@ class TodoListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name'=> "required|string"
+        ]);
+
+        $todo = Todo::create($data);
+        return response($todo, 200);
     }
 
     /**
@@ -90,6 +95,7 @@ class TodoListController extends Controller
      */
     public function destroy(Todo $todo)
     {
-        //
+        $todo->delete();
+        return response(['deleted'=>true], 200);
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Header></Header>
+        <Header :remaining="remaining"></Header>
         <div class="wrapper">
             <Todos :todos="todos"></Todos>
             <Footer></Footer>
@@ -62,54 +62,133 @@
         created(){
             eventBus.$on('createTodo',(newTodo)=> this.createTodo(newTodo))
             eventBus.$on('updateTodo',(data)=> this.updateTodo(data))
-            /*      eventBus.$on('finishedEdit',(data)=> this.finishedEdit(data));
-                  eventBus.$on('removedTodo',(index)=> this.removeTodo(index));
-                  eventBus.$on('checkAllChanged',() => this.checkAllTodos());
-                  eventBus.$on('filterChanged',(filter) => this.filter = filter );
-                  eventBus.$on('clearedCompleteTodos',() => this.clearCompleted() );*/
+            eventBus.$on('removeTodo',(id)=> this.removeTodo(id))
+            eventBus.$on('checkCompleted',(todo)=> this.checkCompleted(todo))
         },
         beforeDestroy(){
-            /*      eventBus.$off('finishedEdit');
-                  eventBus.$off('removedTodo');
-                  eventBus.$off('checkAllChanged');
-                  eventBus.$off('filterChanged' );
-                  eventBus.$off('clearedCompleteTodos' );*/
+            eventBus.$off('createTodo');
+            eventBus.$off('updateTodo');
+            eventBus.$off('removeTodo');
+            eventBus.$off('checkCompleted' );
         },
         mounted: function(){
             axios.get("/todos").then(res=>{
                 this.todos = res.data.todos
             })
         },
+        computed:{
+            remaining: function(){
+                return this.todos.filter(todo=>!todo.completed).length;
+            }
+        },
         methods: {
+            notification_by_sound: function(){
+                let created_todo_notification = new Audio("media/notification.mp3")
+                created_todo_notification.play()
+            },
+            notification_by_msg: function(...args){
+                let group = 'notifications'
+                let type = 'info'
+                let text = "Tache ajoutée avec succès :-) !!!"
+                let title = "Notification"
+                if(_.isString(args)) text = args
+                else if(_.isArray(args)){
+                    text = args[0]
+                    if(_.isSet(args[1])) type = args[1]
+                    if(_.isSet(args[2])) title = args[2]
+                    if(_.isSet(args[3])) group = args[3]
+                }
+                console.log(args.indexOf(0))
+                console.log(_.map(args,1))
+                this.$notify({
+                    group: group,
+                    type: type,
+                    title: title,
+                    text: text,
+                })
+            },
             updateTodo: function(data){
 
-                this.todos.splice(data.index, 1, data.todo);
                 axios.put("/todos/"+data.todo.id,{
                     name: data.todo.name,
                     completed: data.todo.completed
                 }).then(res=>{
-                    console.log(res)
+                    this.notification_by_sound()
+                    if(res.status == 200){
+                        this.todos.splice(data.index, 1, data.todo)
+                        this.notification_by_msg([
+                            "La tache a été mise à jour avec succès !!!",
+                            "success"
+                        ])
+                    } else {
+                        this.notification_by_msg([
+                            "Erreur lors de la mise à jour de la tache !!!",
+                            "error"
+                        ])
+                    }
+
                 })
             },
             createTodo:function(newTodo){
-                let todo =  {
-                    id:10,
-                    name:newTodo,
-                    completed:false,
-                    edit:false,
-                }
-                this.todos.push(todo)
-                let created_todo_notification = new Audio("media/notification.mp3")
-                created_todo_notification.play()
-                this.$notify({
-                    group: 'notifications',
-                    type: 'success',
-                    title: 'Todolist',
-                    text: "Tache ajoutée avec succès :-) !!!",
+                axios.post('/todos',{
+                    name: newTodo
+                }).then(res=>{
+                    this.notification_by_sound()
+                    if(res.status == 200){
+                        this.todos.push({
+                            id:res.data.id,
+                            name:res.data.name,
+                            completed:res.data.completed
+                        });
+                        this.notification_by_msg([
+                            "La tache a été ajouté avec succès !!!",
+                            "success"
+                        ])
+                    } else {
+
+                        this.notification_by_msg([
+                            "Erreur au niveau d'ajout de la tache !!!",
+                            "error"
+                        ])
+                    }
                 })
             },
-            saveTodo: function(todo){
+            removeTodo: function(id){
+                const index  = this.todos.findIndex(item => item.id == id)
+                axios.delete('/todos/'+id).then(res=>{
+                    this.notification_by_sound()
+                    if(res.status == 200){
+                        this.todos.splice(index, 1)
 
+                        this.notification_by_msg([
+                            "La tache a été supprimé avec succès !!!",
+                            "warn"
+                        ])
+                    } else {
+                        this.notification_by_msg([
+                            "Erreur lors de la suppression de la tache !!!",
+                            "error"
+                        ])
+                    }
+                })
+            },
+            checkCompleted: function(todo){
+                const index  = this.todos.findIndex(item => item.id == todo.id)
+                axios.put("/todos/"+todo.id,todo).then(res=>{
+                    this.notification_by_sound()
+                    if(res.status == 200){
+                        this.todos.splice(index, 1, todo)
+                        this.notification_by_msg([
+                            "Toutes les taches sont completes !!!",
+                            "success"
+                        ])
+                    } else {
+                        this.notification_by_msg([
+                            "Erreur, lors de l'execution !!!",
+                            "warn"
+                        ])
+                    }
+                })
             }
         }
     }

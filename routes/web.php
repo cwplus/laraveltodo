@@ -15,16 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('todos','TodoListController');
-
-/*Route::get('/todos','TodoListController@index');
-Route::get('/todos','TodoListController@index');*/
-
-
-/*->only([
+Route::resource('todos','TodoListController')->only([
     'index',
     'destroy',
     'update',
     'store'
-
-])*/
+]);

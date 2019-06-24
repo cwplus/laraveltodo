@@ -2,7 +2,7 @@
     <div class="todo-item">
         <div class="todo-left">
             <label class="input-check">
-                <input type="checkbox" v-model="completed">
+                <input type="checkbox" v-model="completed" @change="checkCompleted">
                 #{{ todo.id }} -
             </label>
             <span class="todo-label" v-if="!editing" @dblclick="editTodo" :class="{completed: completed}"> {{ name }}</span>
@@ -47,12 +47,17 @@
             }
         },
         methods: {
+            checkCompleted: function()
+            {
+                this.todo.completed = this.completed
+                eventBus.$emit('checkCompleted',this.todo)
+            },
             editTodo(){
                 this.beforeEditName = this.name
                 this.editing = true
             },
             removeTodo(index){
-
+                eventBus.$emit('removeTodo',this.todo.id);
             },
             SubmitEdit(){
 
