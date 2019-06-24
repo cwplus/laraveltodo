@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TodoListJson;
 use App\Models\TodoList as Todo;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class TodoListController extends Controller
      */
     public function index()
     {
-        return response()->json(['todos'=> Todo::all()]);
+        $todos = TodoListJson::collection(Todo::all());
+
+        return response()->json(['todos'=> $todos]);
     }
 
     /**

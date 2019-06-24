@@ -1912,7 +1912,7 @@ var todos = [{
   },
   data: function data() {
     return {
-      todos: todos
+      todos: []
     };
   },
   created: function created() {
@@ -1934,7 +1934,13 @@ var todos = [{
           eventBus.$off('filterChanged' );
           eventBus.$off('clearedCompleteTodos' );*/
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    var _this2 = this;
+
+    axios.get("http://127.0.0.1:8000/todos").then(function (res) {
+      _this2.todos = res.data.todos;
+    });
+  },
   methods: {
     createTodo: function createTodo(newTodo) {
       var todo = {
@@ -1952,7 +1958,8 @@ var todos = [{
         title: 'Todolist',
         text: "Tache ajoutée avec succès :-) !!!"
       });
-    }
+    },
+    saveTodo: function saveTodo(todo) {}
   }
 });
 

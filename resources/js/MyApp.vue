@@ -56,7 +56,7 @@
         },
         data: function () {
             return {
-                todos: todos
+                todos: []
             }
         },
         created(){
@@ -75,7 +75,9 @@
                   eventBus.$off('clearedCompleteTodos' );*/
         },
         mounted: function(){
-
+            axios.get("http://127.0.0.1:8000/todos").then(res=>{
+                this.todos = res.data.todos
+            })
         },
         methods: {
             createTodo:function(newTodo){
@@ -94,6 +96,9 @@
                     title: 'Todolist',
                     text: "Tache ajoutée avec succès :-) !!!",
                 })
+            },
+            saveTodo: function(todo){
+
             }
         }
     }

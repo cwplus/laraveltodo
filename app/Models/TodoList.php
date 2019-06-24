@@ -8,4 +8,5 @@ class TodoList extends Model
 {
     protected $table = 'todolist';
     protected $fillable = ["name","completed"];
+    protected $completed = false;
 }
